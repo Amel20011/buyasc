@@ -1,0 +1,215 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --bp-black: #0f0f0f;
+    --bp-pink: #ff69b4; /* Hot Pink */
+    --bp-light-pink: #ffb6c1;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 105, 180, 0.3);
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bp-black);
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- ANIMASI LIQUID BACKGROUND --- */
+.background-blobs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 10s infinite alternate;
+}
+
+.blob:nth-child(1) { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--bp-pink); }
+.blob:nth-child(2) { bottom: -10%; right: -10%; width: 400px; height: 400px; background: #8a2be2; animation-delay: -5s; }
+.blob:nth-child(3) { top: 40%; left: 40%; width: 300px; height: 300px; background: var(--bp-light-pink); animation-duration: 15s; }
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+/* --- HEADER & HERO --- */
+header {
+    padding: 20px 5%;
+    display: flex;
+    justify-content: center;
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bp-pink);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.hero { padding: 60px 20px 40px; text-align: center; }
+
+.hero h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #fff, var(--bp-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero p { color: #ccc; }
+
+/* --- CARD GLASSMORPHISM & ANIMASI SHINE/PRESS --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px 20px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Cahaya Bergerak (Liquid Shine Effect) saat HOVER */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.7s ease-in-out;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+    border-color: var(--bp-pink);
+}
+
+/* Animasi Cahaya Bergerak (The Shine) */
+.card:hover::before {
+    left: 100%;
+}
+
+/* Animasi saat Card DITEKAN */
+.card:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 5px var(--bp-pink);
+}
+
+/* Badge & Content Styles */
+.update-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 105, 180, 0.2);
+    color: var(--bp-light-pink);
+    font-size: 0.75rem;
+    padding: 5px 0;
+    font-weight: 600;
+    border-bottom: 1px solid var(--glass-border);
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.icon-box { margin-top: 25px; font-size: 3rem; margin-bottom: 10px; }
+.card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+.price-tag {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--bp-pink);
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--bp-pink);
+}
+.features { list-style: none; margin-bottom: 25px; text-align: left; font-size: 0.85rem; color: #ddd; padding: 0 10px; }
+.features li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+.features li::before { content: '✦'; position: absolute; left: 0; color: var(--bp-pink); }
+
+/* --- BUTTON PRODUCT PULSE EFFECT --- */
+@keyframes btn-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 105, 180, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+}
+
+.btn-buy {
+    width: 100%;
+    padding: 12px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, var(--bp-pink), #ff1493);
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    animation: btn-pulse 2s infinite ease-out;
+}
+
+.btn-buy:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--bp-pink);
+    animation: none;
+}
+
+/* --- NEW GLOBAL CTA BUTTON STYLE --- */
+.global-cta {
+    text-align: center;
+    padding: 50px 20px;
+}
+.btn-global {
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff1493, #ff69b4);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 3px solid #fff;
+    box-shadow: 0 0 20px #ff1493;
+}
+
+.btn-global:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px #ff1493;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--glass-border);
+    color: #888;
+    background: rgba(0,0,0,0.8);
+}
