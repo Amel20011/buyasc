@@ -1,13 +1,12 @@
 // --- KONFIGURASI NOMOR WHATSAPP (Wajib Diubah) ---
-// PASTIKAN Anda MENGGANTI nomor di bawah ini dengan nomor WA ASLI Anda.
-// Format harus 628xxx (tanpa tanda +, spasi, atau strip).
-const nomerWA = "13658700681"; // ⬅️ GANTI BARIS INI! Contoh: "628991234567"
+// GANTI ANGKA DI BAWAH INI dengan nomor WhatsApp ASLI Anda.
+const nomerWA = "13658700681"; // ⬅️ GANTI NOMOR INI! Contoh: "628123456789"
 
 function buyScript(tipe, harga) {
-    // Cek Keamanan: Mencegah tombol tidak berfungsi jika nomor masih placeholder.
+    // Cek Keamanan: Jika nomor masih placeholder, tampilkan peringatan.
     if (nomerWA === "13658700681") {
         alert("🚨 PERBAIKAN: Tombol tidak berfungsi karena Anda belum mengganti variabel 'nomerWA' di file script.js. Harap ganti nomornya!");
-        console.error("Kesalahan: Nomor WhatsApp belum diganti. Tombol tidak akan membuka tautan.");
+        console.error("Kesalahan: Nomor WhatsApp belum diganti.");
         return; 
     }
 
@@ -19,4 +18,3 @@ function buyScript(tipe, harga) {
     // Buka Link WhatsApp
     window.open(url, '_blank');
 }
-
