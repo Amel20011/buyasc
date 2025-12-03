@@ -1,20 +1,14 @@
-// --- KONFIGURASI NOMOR WHATSAPP (Wajib Diubah) ---
-// GANTI ANGKA DI BAWAH INI dengan nomor WhatsApp ASLI Anda.
-const nomerWA = "13658700681"; // ⬅️ GANTI NOMOR INI! Contoh: "628123456789"
+// --- KONFIGURASI NOMOR WHATSAPP ---
+// Nomor telah diatur ke 13658700681 sesuai permintaan Anda.
+const nomerWA = "13658700681"; 
 
 function buyScript(tipe, harga) {
-    // Cek Keamanan: Jika nomor masih placeholder, tampilkan peringatan.
-    if (nomerWA === "13658700681") {
-        alert("🚨 PERBAIKAN: Tombol tidak berfungsi karena Anda belum mengganti variabel 'nomerWA' di file script.js. Harap ganti nomornya!");
-        console.error("Kesalahan: Nomor WhatsApp belum diganti.");
-        return; 
-    }
-
-    // Logika Pembuatan Pesan WA
+    // Membuat pesan otomatis berdasarkan produk yang diklik
     const pesan = `Halo Liviaa SHOP, saya tertarik membeli *Script Bot WhatsApp ${tipe}* seharga *Rp ${harga}*. \n\nApakah stok masih tersedia?`;
     
+    // Membuat URL WhatsApp
     const url = `https://wa.me/${nomerWA}?text=${encodeURIComponent(pesan)}`;
     
-    // Buka Link WhatsApp
+    // Membuka Link WhatsApp secara otomatis
     window.open(url, '_blank');
 }
