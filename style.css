@@ -95,7 +95,7 @@ header {
     cursor: pointer;
 }
 
-/* Cahaya Bergerak (Liquid Shine Effect) saat HOVER */
+/* 🔦 INI ADALAH EFECT CAHAYA YANG BERGERAK 🔦 */
 .card::before {
     content: '';
     position: absolute;
@@ -103,20 +103,21 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
+    /* Gradient putih transparan adalah cahayanya */
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
     transition: 0.7s ease-in-out;
     z-index: 1;
+}
+
+/* ➡️ INI ADALAH ANIMASI GERAK CAHAYA SAAT DI-HOVER ➡️ */
+.card:hover::before {
+    left: 100%; /* Cahaya bergerak dari kiri ke kanan */
 }
 
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
     border-color: var(--bp-pink);
-}
-
-/* Animasi Cahaya Bergerak (The Shine) */
-.card:hover::before {
-    left: 100%;
 }
 
 /* Animasi saat Card DITEKAN */
@@ -180,7 +181,7 @@ header {
     animation: none;
 }
 
-/* --- NEW GLOBAL CTA BUTTON STYLE --- */
+/* --- GLOBAL CTA BUTTON STYLE --- */
 .global-cta {
     text-align: center;
     padding: 50px 20px;
